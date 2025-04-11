@@ -1,0 +1,29 @@
+.o_split_view.o_view_controller.o_action {
+    > .o_content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    
+    .o_form_view.o_view_controller {
+        position: relative;
+    }
+    
+    .o_form_view .o_group.o_label_nowrap .o_form_label {
+        white-space: wrap;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .o_split_view.o_view_controller.o_action {
+        .o_form_view .o_form_statusbar > .o_field_widget {
+            margin-left: 0px !important;
+            margin-top: 1px !important;
+        }
+    }
+}
+
+.o-row-active {
+    --table-bg: #dbdbdb !important;
+}

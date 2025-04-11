@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="char2many_tags.Char2ManyTagsField">
+        <t t-if="props.readonly">
+            <TagsList tags="tags" />
+        </t>
+        <t t-else="">
+            <div
+                class="o_field_tags d-inline-flex flex-wrap gap-1 mw-100"
+                t-att-class="{'o_tags_input o_input': !props.readonly}"
+                t-ref="many2ManyTagsField"
+            >
+                <TagsList tags="tags" />
+                <input
+                    class="o_input mt-1"
+                    t-att-id="props.id"
+                    t-att-type="props.isPassword ? 'password' : 'text'"
+                    t-att-autocomplete="props.autocomplete or (props.isPassword ? 'new-password' : 'off')"
+                    t-att-maxlength="maxLength > 0 and maxLength"
+                    t-att-placeholder="placeholder"
+                    t-on-blur="onBlur"
+                    t-ref="input"
+                />
+            </div>
+        </t>
+    </t>
+
+</templates>

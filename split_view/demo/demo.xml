@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="base.action_res_users" model="ir.actions.act_window">
+            <field name="view_mode">list,kanban,form,split</field>
+        </record>
+
+
+        <record id="res_user_split_view_demo" model="ir.ui.view">
+            <field name="name">User Split View Demo</field>
+            <field name="model">res.users</field>
+            <field name="arch" type="xml">
+                <split>
+                    <field name="name"/>
+                    <field name="login"/>
+                    <field name="lang"/>
+                    <field name="login_date"/>
+                </split>
+            </field>
+        </record>
+
+        <record id="action_res_users_view_split_view" model="ir.actions.act_window.view">
+            <field eval="100" name="sequence"/>
+            <field name="view_mode">split</field>
+            <field name="view_id" ref="res_user_split_view_demo"/>
+            <field name="act_window_id" ref="base.action_res_users"/>
+        </record>
+        
+    </data>
+</odoo>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+<t t-name="x2many_search.X2ManySearchField">
+    <div class="x2many_search">
+        <WithSearch t-props="withSearchProps" t-slot-scope="search">
+            <div class="d-flex gap-3 flex-column">
+                <div class="d-flex justify-content-end gap-4" t-if="props.viewMode === 'list'">
+                    <div class="o-searchbar-x2many">
+                        <SearchBar toggler="searchBarToggler" autofocus="firstLoad"/>
+                    </div>
+                    <div t-if="props.record.data[props.name].count > props.record.data[props.name].limit" class="o_cp_pager" role="search">
+                        <Pager t-props="pagerProps"/>
+                    </div>
+                </div>
+                <div>
+                    <ListRendererX2Many t-if="props.viewMode === 'list'" t-props="this.rendererProps" />
+                    <KanbanRendererX2Many t-elif="props.viewMode" t-props="this.rendererProps" />
+                </div>
+            </div>
+        </WithSearch>
+    </div>
+
+</t>
+
+</templates>
