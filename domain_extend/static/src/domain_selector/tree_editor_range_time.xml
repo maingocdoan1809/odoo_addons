@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="nev_helpdesk.TreeEditor.RangeTime">
+        <div class="d-flex">
+            <Select t-props="this.extractProps"/>
+            <input min="1" t-if="this.state.showInputBox" t-on-keydown="onKeydown" type="number" class="o_input" t-att-value="this.state.dateCount" t-on-change="this.onInputChange" />
+            <t t-if="this.state.dateStart and this.state.dateEnd">
+                <div style="white-space: nowrap;margin-left:5px">
+                    <span>(</span> <span><t t-esc="this.state.dateStart"/></span> - <span><t t-esc="this.state.dateEnd"/></span> <span>)</span>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

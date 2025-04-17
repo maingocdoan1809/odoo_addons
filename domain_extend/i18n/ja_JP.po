@@ -1,0 +1,293 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* domain_extend
+#
+msgid ""
+msgstr ""
+"Last-Translator: Mai Ngoc Doan\n"
+"Language-Team: Sojitz\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Current Year"
+msgstr "今年"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Previous Year"
+msgstr "前年"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Previous 2 Year"
+msgstr "前々々年"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "2 Year ago"
+msgstr "前々年"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Next Year"
+msgstr "翌年"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Current and Previous Year"
+msgstr "今年および前年"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Current and Previous 2 Year"
+msgstr "今年および前年々年"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Current and Next Year"
+msgstr "今年および翌年"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Current Fiscal Year"
+msgstr "当年度"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Previous Fiscal Year"
+msgstr "前年度"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Previous 2 Fiscal Year"
+msgstr "前年度および前々年度"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "2 Fiscal Year ago"
+msgstr "前々年度"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Next Fiscal Year"
+msgstr "翌年度"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Current and Previous Fiscal Year"
+msgstr "当年度および前年度"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Current and Previous 2 Fiscal Year"
+msgstr "当年度および前年度および前々年度"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Current and Next Fiscal Year"
+msgstr "当年度および翌年度"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Current Quarter"
+msgstr "当四半期"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Previous Quarter"
+msgstr "前四半期"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Next Quarter"
+msgstr "翌四半期"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Current and Previous Quarter"
+msgstr "当期および前四半期"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Current and Next Quarter"
+msgstr "当期および翌四半期"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Current and Next 3 Quarter"
+msgstr "当期および3翌四半期"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "This Month"
+msgstr "今月"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Last Month"
+msgstr "先月"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Next Month"
+msgstr "来月"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Current and Previous Month"
+msgstr "今月および先月"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Current and Next Month"
+msgstr "今月および来月"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "This Week"
+msgstr "今週"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Last Week"
+msgstr "先週"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Next Week"
+msgstr "来週"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Current and Previous Week"
+msgstr "今週および先週"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Current and Next Week"
+msgstr "今週および翌週"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Today"
+msgstr "今日"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Yesterday"
+msgstr "昨日"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Tomorrow"
+msgstr "明日"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Current and Previous Day"
+msgstr "今日および昨日"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Current and Next Day"
+msgstr "今日および明日"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Last"
+msgstr "過去日間"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/domain_selector_operator.js:0
+#, python-format
+msgid "Next"
+msgstr "翌日日間"
+
+#. module: nev_helpdesk
+#. odoo-javascript
+#: code:addons/domain_extend/static/src/domain_selector/utils.js:0
+#, python-format
+msgid "%s Days"
+msgstr "%s日"
+
