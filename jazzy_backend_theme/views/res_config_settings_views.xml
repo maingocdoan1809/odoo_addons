@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="base.res_config_settings_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//div[@id='companies']" position='after'>
-                <block title="Jazzy Backend Theme">
+                <block title="Backend Theme">
                     <setting>
                         <div class="w-50 row">
                             <span class="d-block w-75 py-2">Background Image</span>

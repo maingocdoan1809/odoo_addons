@@ -1,12 +1,6 @@
 // .o_form_sheet_bg, .o_kanban_renderer {
 //     background: url('/jazzy_backend_theme/static/description/bg.png') !important;
 // }
-.o_list_table {
-    table-layout: auto !important;
-    td.o_data_cell.o_list_char[name~='nsh_issue_location'] {
-        white-space: break-spaces !important;
-    }
-}
 
 .o_form_status_indicator {
     align-self: auto !important;

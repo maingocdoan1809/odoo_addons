@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-inherit="web.WebClient" t-inherit-mode="extension">
+        <xpath expr="//ActionContainer" position="replace">
+            <div class="d-flex h-100 w-100">
+                <NavSideBar t-if="!env.isSmall"/>
+                <ActionContainer />
+            </div>
+        </xpath>
+    </t>
+</templates>

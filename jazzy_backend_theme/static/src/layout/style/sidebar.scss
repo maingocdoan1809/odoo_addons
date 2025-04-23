@@ -2,7 +2,6 @@
     height: calc(100% - 0%);
    position: fixed;
     background-color: var(--app-bar-accent);
-    width: 50px;
     overflow-y: scroll;
     -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
     scrollbar-width: none;  /* Hide scrollbar for Firefox */
@@ -53,13 +52,115 @@
     width: 30px;
     border-radius:5px;
 }
-html .o_web_client > .o_action_manager{
-    margin-left:50px;
-}
+
 .sidebar_panel .sidebar .sidebar_menu li .nav-link {
     padding:10px 10px 10px 10px;
 }
 
 .o_control_panel_main {
     gap: 8px;
+}
+html .o_web_client > div > .o_action_manager .o_action {
+    > .o_content {
+        height: 100%;
+    }
+    height: 100%;
+}
+%o-html-layout-fill {
+    .o_web_client {
+
+        > div > .o_action_manager {
+            direction: ltr; //Define direction attribute here so when rtlcss preprocessor run, it converts it to rtl
+            flex: 1 1 auto;
+            height: 100%;
+            overflow: hidden;
+        
+            > .o_action {
+            height: 100%;
+            display: flex;
+            flex-flow: column nowrap;
+            overflow: hidden;
+        
+            @include media-breakpoint-up(lg) {
+                -ms-overflow-style: none; // IE and Edge
+                scrollbar-width: none;    // Firefox
+        
+                &::-webkit-scrollbar {    // Chrome, Safari and Opera
+                display: none;
+                }
+            }
+        
+            > .o_control_panel {
+                flex: 0 0 auto;
+            }
+            .o_content {
+                height: 100%;
+            }
+        
+            @include media-breakpoint-down(md) {
+                // Made the o_action scroll instead of its o_content.
+                // Except when the view wants to handle the scroll itself.
+                &:not(.o_action_delegate_scroll), .o_form_view_container {
+                overflow: auto;
+        
+                .o_content {
+                    overflow: initial;
+                }
+                }
+            }
+            }
+        }
+
+    }
+}
+.nav_sidebar {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+    -webkit-flex-flow: column nowrap;
+    flex-flow: column nowrap;
+    background: var(--settings__tab-bg);
+    overflow: auto;
+    height: 100%;
+    &.nav_sub_sidebar {
+        height: fit-content;
+    }
+    .selected {
+        background-color: var(--settings__tab-bg--active, #dddbe8);
+        box-shadow: inset 2px 0 0 #71639e;
+    }
+    .tab {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        padding: 0 32px 0 16px;
+        height: 40px;
+        color: var(--settings__tab-color);
+        font-size: 13px;
+        line-height: 40px;
+        cursor: pointer;
+        white-space: nowrap;
+        .icon {
+            width: 23px;
+            min-width: 23px;
+            margin-right: 10px;
+        }
+        &.selected {
+            color: #212529;
+        }
+        &.sub_tab:hover {
+            color: #212529 !important;
+            background-color: #cccbd1;
+        }
+    }
+    .tab:hover {
+        background-color: #cac4e5;
+    }
+}
+
+.o_action_manager {
+    width: 100%;
 }
