@@ -51,6 +51,16 @@ patch(NavBar.prototype, {
 export class NavSideBar extends NavBar {
     static template = "theme.NavSideBar"
 
+    setup() {
+        super.setup()
+        this.command = useService('command')
+    }
 
+    openCommand() {
+        return this.command.openMainPalette({
+            bypassEditableProtection: true,
+            global: true,
+        })
+    }
 }
 

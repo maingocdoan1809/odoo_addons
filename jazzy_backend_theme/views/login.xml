@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="theme.WebLogin" inherit_id="web.login_layout">
+        <xpath expr="//div[hasclass('container')]" position="inside">
+            
+        </xpath>
+    </template>
+
+</odoo>

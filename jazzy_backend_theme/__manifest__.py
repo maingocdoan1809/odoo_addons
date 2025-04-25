@@ -37,7 +37,7 @@
     'assets': {
         'web.assets_backend': [
             'jazzy_backend_theme/static/src/components/app_menu/side_menu.xml',
-            # 'jazzy_backend_theme/static/src/components/app_menu/webclient.xml',
+            'jazzy_backend_theme/static/src/components/app_menu/webclient.xml',
             'jazzy_backend_theme/static/src/components/app_menu/webclient.js',
             'jazzy_backend_theme/static/src/components/app_menu/side_menu.xml',
             'jazzy_backend_theme/static/src/layout/style/layout_colors.scss',
