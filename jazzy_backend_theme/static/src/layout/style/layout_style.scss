@@ -15,9 +15,6 @@
 
 }
 
-.bg-primary{
-    background-color: var(--primary-accent) !important;
-}
 .o_field_widget.o_field_many2one .o_external_button {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 auto;
@@ -72,24 +69,7 @@
 // .o_searchview .o_searchview_facet .o_searchview_facet_label {
 //     background-color: var(--primary-accent) !important;
 // }
-.btn-secondary {
-    color: #fff !important;
-    background-color: var(--primary-accent) !important;
-    border-color: var(--primary-accent) !important;
-    margin:0 5px 0 0;
-    &:hover{
-        background-color: var(--primary-hover) !important;
-    }
-}
-.btn-outline-primary {
-    border-color: var(--primary-hover);
-    color: var(--primary-hover);
-}
-.btn-outline-primary:hover {
-    color: #fff;
-    background-color: var(--primary-hover);
-    border-color: var(--primary-hover);
-}
+
 .o_searchview {
     // background-color: var(--bg-white) !important;
     // padding: 1px 25px 3px 5px;
@@ -459,10 +439,7 @@
     background: var(--primary-accent) !important;
     color: white !important;
 }
-.btn-primary:hover {
-    background: var(--primary-hover) !important;
-    color: white;
-}
+
 .o_statusbar_status .o_arrow_button.btn-secondary {
     margin: 0px !important;
     color: var(--primary-accent) !important;
@@ -503,19 +480,14 @@ a, .btn {
     color: var(--primary-accent);
 
 }
-.btn:hover {
-    color: rgb(248, 248, 248) !important;
-    background-color: var(--primary-accent);
-}
+
 .text-bg-primary {
     background-color: var(--primary-accent) !important;
 }
 .btn-info {
     color: white !important;
 }
-.dropdown-toggle:hover {
-    color: white !important;
-}
+
 .o_searchview_icon {
     margin-left: 8px;
 }

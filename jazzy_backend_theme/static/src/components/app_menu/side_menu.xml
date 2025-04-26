@@ -106,7 +106,7 @@
                     attrs="{ href: getMenuItemHref(currentApp), 'data-menu-xmlid': currentApp.xmlid, 'data-section': currentApp.id }"
                 />
         
-                <!-- <div class="o_navbar_breadcrumbs d-contents"/> -->
+                <div class="o_navbar_breadcrumbs d-contents"/>
 <!--         
                 <t t-if="!env.isSmall">
                     <t t-if="currentAppSections.length" t-call="web.NavBar.SectionsMenu">
@@ -132,48 +132,52 @@
     <t t-name="theme.NavBar.SectionsMenu">
         <t t-set="sections" t-value="currentAppSections" />
         <div t-if="currentAppSections.length" class="nav_sidebar nav_sub_sidebar" t-ref="appSubMenus" role="menu">
-            <t t-foreach="sections" t-as="section" t-key="section.id">
-                <Dropdown position="'right-middle'" t-if="section.childrenTree.length" state="subMenuState">
-                    <div t-att-data-hotkey="hotkey" class="tab sub_tab d-flex justify-content-between align-items-center" t-att-data-menu-xmlid="section.xmlid" >
-                        <span t-esc="section.name" t-att-data-section="section.id" />
-                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-                    </div>
-                    <t t-set-slot="content">
-                        <t t-set="items" t-value="section.childrenTree" />
-                        <t t-set="decalage" t-value="20" />
-                        <t t-set="style" t-value="`padding-left: ${decalage}px;`" />
-
-                        <t t-foreach="items" t-as="item" t-key="item.id">
-                          <DropdownItem
-                            t-if="!item.childrenTree.length"
-                            class="{
-                              'dropdown-item': true,
-                              o_dropdown_menu_group_entry: decalage gt 20
-                            }"
-                            t-esc="item.name"
-                            onSelected="() => this.onNavBarDropdownItemSelection(item)"
-                            attrs="{ style: style, href: getMenuItemHref(item), 'data-menu-xmlid': item.xmlid, 'data-section': item.id }"
-                          />
-                          <t t-else="">
-                            <div class="dropdown-menu_group dropdown-header" t-att-style="style" t-esc="item.name" />
+            <DropdownGroup>
+                <t t-foreach="sections" t-as="section" t-key="section.id">
+                    <Dropdown position="'right-middle'" t-if="section.childrenTree.length" state="subMenuState">
+                        <div t-att-data-hotkey="hotkey" class="tab sub_tab d-flex justify-content-between align-items-center" t-att-data-menu-xmlid="section.xmlid" >
+                            <span t-esc="section.name" t-att-data-section="section.id" />
+                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                        </div>
+                        <t t-set-slot="content">
                             <t t-call="web.NavBar.SectionsMenu.Dropdown.MenuSlot">
-                              <t t-set="items" t-value="item.childrenTree" />
-                              <t t-set="decalage" t-value="decalage + 12" />
+                                <t t-set="items" t-value="section.childrenTree" />
+                                <t t-set="decalage" t-value="decalage + 12" />
                             </t>
-                          </t>
                         </t>
-
+                    </Dropdown>
+                    <t t-if="!section.childrenTree.length">
+                        <div class="tab sub_tab d-flex justify-content-between align-items-center">
+                            <DropdownItem
+                                onSelected="() => this.onNavBarDropdownItemSelection(section)"
+                                t-esc="section.name"
+                                attrs="{
+                                    href: getMenuItemHref(section),
+                                    'data-hotkey': hotkey,
+                                    'data-menu-xmlid': section.xmlid,
+                                    'data-section': section.id,
+                                }"
+                            />
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </div>
                     </t>
-                </Dropdown>
-            </t>
+                </t>
+                <t t-if="currentAppSectionsExtra.length"
+                    t-call="web.NavBar.SectionsMenu.MoreDropdown">
+                    <t t-set="sections" t-value="currentAppSectionsExtra" />
+                    <t t-if="sectionsVisibleCount lt 10">
+                        <t t-set="hotkey" t-value="(sectionsVisibleCount + 1 % 10).toString()" />
+                    </t>
+                </t>
+            </DropdownGroup>
         </div>
     </t>
 
     <t t-name="theme.NavSideBar">
         <t t-set="apps" t-value="menuService.getApps()" />
         <div class="nav_sidebar h-100 border-end">
-            <div class="p-2 mb-3 d-flex justify-content-center align-items-center" style="background-image: url('/web/binary/company_logo');height:100px;background-size:cover;background-position:center;">
-                <!-- <img t-attf-src="/web/binary/company_logo" alt="Logo" style="max-height:100px; max-width: 100%; width:auto"/> -->
+            <div class="p-2 mb-3 d-flex justify-content-center align-items-center" style="height:100px;">
+                <img t-attf-src="/web/binary/company_logo" alt="Logo" style="max-height:100px; max-width: 100%; width:auto"/>
             </div>
             <div class="d-flex align-items-center justify-content-between app_name_container">
                 <p class="p-2 app_name" >Apps</p>
