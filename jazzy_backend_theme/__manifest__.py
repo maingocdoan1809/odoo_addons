@@ -33,6 +33,7 @@
     "data": [
         'views/layout_templates.xml',
         'views/res_config_settings_views.xml',
+        'views/login.xml',
     ],
     'assets': {
         'web.assets_backend': [
@@ -47,7 +48,7 @@
             'jazzy_backend_theme/static/src/components/app_menu/search_apps.js',
         ],
         'web.assets_frontend': [
-            'jazzy_backend_theme/static/src/layout/style/login.scss'
+            'jazzy_backend_theme/static/src/layout/style/login.scss',
         ],
     },
     'images': [

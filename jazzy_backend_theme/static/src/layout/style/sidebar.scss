@@ -113,6 +113,17 @@ html .o_web_client > div > .o_action_manager .o_action {
 
     }
 }
+
+.o_command_palette_search {
+    > .form-control {
+        padding: 5px 10px !important;
+    }
+
+    > .o_namespace {
+        margin-right: 10px !important;
+    }
+}
+
 .nav_sidebar {
     display: -webkit-box;
     display: -webkit-flex;
@@ -136,7 +147,7 @@ html .o_web_client > div > .o_action_manager .o_action {
             font-size: larger;
         }
         span {
-            padding: 10pxs;
+            padding: 10px;
         }
     }
 
