@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <template id="jazzy_backend_theme.WebLogin" inherit_id="web.login_layout">
+    <template id="backend_theme.WebLogin" inherit_id="web.login_layout">
         <xpath expr="//div[hasclass('container')]" position="inside">
             <div style="background-color: #FFF1DB; padding: 40px; font-family: Arial, sans-serif;" class="login-right">
                 <div style="max-width: 600px; margin: 0 auto;">

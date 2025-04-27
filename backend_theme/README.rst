@@ -1,0 +1,1 @@
+Backend theme for odoo

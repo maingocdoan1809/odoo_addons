@@ -1,0 +1,196 @@
+#sidebar_panel {
+    height: calc(100% - 0%);
+   position: fixed;
+    background-color: var(--app-bar-accent);
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+    scrollbar-width: none;  /* Hide scrollbar for Firefox */
+    z-index: 999;
+}
+#sidebar_panel::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+}
+.sidebar_panel .sidebar {
+    padding: 0;
+    white-space: nowrap;
+    padding-bottom: 20px;
+    padding-top: 5px;
+}
+.sidebar_panel .sidebar .sidebar_menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.sidebar_panel .sidebar .sidebar_menu li {
+    margin: 0;
+    padding: 0;
+    border: 0px;
+    display: block;
+}
+.sidebar_panel .dropdown-item{
+    padding: 10px 10px 10px 10px;
+}
+.o_main_navbar .o_menu_brand {
+  text-decoration: none !important;
+  margin-left: 10px;
+}
+.sidebar_panel .sidebar .sidebar_menu li a {
+    margin: 0;
+    border: 0px;
+    display: block;
+    cursor: pointer;
+    overflow: hidden;
+    color: #ffffff;
+    font-size: 13px;
+    transition:.3s all;
+}
+.sidebar_panel .sidebar .sidebar_menu li:hover {
+    background: var(--primary-hover-05) !important;
+    color: #fff;
+}
+.sidebar_panel .sidebar .sidebar_menu li a .sidebar_img {
+    width: 30px;
+    border-radius:5px;
+}
+
+.sidebar_panel .sidebar .sidebar_menu li .nav-link {
+    padding:10px 10px 10px 10px;
+}
+
+.o_control_panel_main {
+    gap: 8px;
+}
+html .o_web_client > div > .o_action_manager .o_action {
+    > .o_content {
+        height: 100%;
+    }
+    height: 100%;
+}
+%o-html-layout-fill {
+    .o_web_client {
+
+        > div > .o_action_manager {
+            direction: ltr; //Define direction attribute here so when rtlcss preprocessor run, it converts it to rtl
+            flex: 1 1 auto;
+            height: 100%;
+            overflow: hidden;
+        
+            > .o_action {
+            height: 100%;
+            display: flex;
+            flex-flow: column nowrap;
+            overflow: hidden;
+        
+            @include media-breakpoint-up(lg) {
+                -ms-overflow-style: none; // IE and Edge
+                scrollbar-width: none;    // Firefox
+        
+                &::-webkit-scrollbar {    // Chrome, Safari and Opera
+                display: none;
+                }
+            }
+        
+            > .o_control_panel {
+                flex: 0 0 auto;
+            }
+            .o_content {
+                height: 100%;
+            }
+        
+            @include media-breakpoint-down(md) {
+                // Made the o_action scroll instead of its o_content.
+                // Except when the view wants to handle the scroll itself.
+                &:not(.o_action_delegate_scroll), .o_form_view_container {
+                overflow: auto;
+        
+                .o_content {
+                    overflow: initial;
+                }
+                }
+            }
+            }
+        }
+
+    }
+}
+
+.o_command_palette_search {
+    > .form-control {
+        padding: 5px 10px !important;
+    }
+
+    > .o_namespace {
+        margin-right: 10px !important;
+    }
+}
+
+.nav_sidebar {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+    -webkit-flex-flow: column nowrap;
+    flex-flow: column nowrap;
+    background: var(--settings__tab-bg);
+    overflow: auto;
+
+    .app_name_container {
+        .app_name {
+            margin: 0;
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text; // For Firefox (optional but safe)
+            font-weight: 500;
+            font-size: larger;
+        }
+        span {
+            padding: 10px;
+        }
+    }
+
+    &.nav_sub_sidebar {
+        height: fit-content;
+    }
+    .selected {
+        background-color: var(--settings__tab-bg--active, #dddbe8);
+        box-shadow: inset 2px 0 0 #71639e;
+    }
+    .tab {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        padding: 0 32px 0 16px;
+        height: 40px;
+        color: var(--settings__tab-color);
+        font-size: 13px;
+        line-height: 40px;
+        cursor: pointer;
+        white-space: nowrap;
+        align-items: center;
+        width: 220px;
+        .icon {
+            width: 23px;
+            height: 23px;
+            min-width: 23px;
+            margin-right: 10px;
+        }
+        &.selected {
+            color: #212529;
+            font-weight: bold;
+        }
+        &.sub_tab:hover {
+            color: #212529 !important;
+            background-color: #cccbd1;
+        }
+    }
+    .tab:hover {
+        background-color: #cac4e5;
+    }
+}
+
+.o_action_manager {
+    width: 100%;
+}

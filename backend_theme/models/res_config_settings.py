@@ -31,32 +31,32 @@ class ResConfigSettings(models.TransientModel):
                                      readonly=False,
                                      help="Add background image")
     app_bar_color = fields.Char(string='Appbar color',
-                                config_parameter='jazzy_backend_theme.'
+                                config_parameter='backend_theme.'
                                                  'appbar_color',
                                 default='#000000',
                                 help="App bar color")
     primary_accent = fields.Char(string="Navbar color",
-                                 config_parameter='jazzy_backend_theme.'
+                                 config_parameter='backend_theme.'
                                                   'primary_accent_color',
                                  default='#004589',
                                  help="Navbar color")
     primary_hover = fields.Char(string="Hover Primary Color",
-                                config_parameter='jazzy_backend_theme.'
+                                config_parameter='backend_theme.'
                                                  'primary_hover',
                                 default='#00376E',
                                 help="Hover primary color")
     appbar_text = fields.Char(string="Home Menu Text Color",
-                              config_parameter='jazzy_backend_theme.'
+                              config_parameter='backend_theme.'
                                                'appbar_text',
                               default='#ffffff',
                               help="App bar text color")
     secondary_hover = fields.Char(string="AppBar Hover",
-                                  config_parameter='jazzy_backend_theme.'
+                                  config_parameter='backend_theme.'
                                                    'secondary_hover',
                                   default='#F2F2F3',
                                   help="Appbar hover")
     kanban_bg_color = fields.Char(string="Kanban Bg Color",
-                                  config_parameter='jazzy_backend_theme.'
+                                  config_parameter='backend_theme.'
                                                    'kanban_bg_color',
                                   default='#F7F7F7',
                                   help="Kanban view background color")
@@ -66,20 +66,20 @@ class ResConfigSettings(models.TransientModel):
         colors = {
             'full_bg_img': self.env.user.company_id.background_image,
             'appbar_color': self.env[ 'ir.config_parameter'].sudo().get_param(
-              'jazzy_backend_theme.appbar_color'),
+              'backend_theme.appbar_color'),
             'primary_accent': self.env['ir.config_parameter'].sudo().get_param(
-              'jazzy_backend_theme.primary_accent_color'),
+              'backend_theme.primary_accent_color'),
             'secondary_color': self.env['ir.config_parameter'].sudo().get_param(
-              'jazzy_backend_theme.secondary_color'),
+              'backend_theme.secondary_color'),
             'kanban_bg_color': self.env['ir.config_parameter'].sudo().get_param(
-              'jazzy_backend_theme.kanban_bg_color'),
+              'backend_theme.kanban_bg_color'),
             'primary_hover': self.env['ir.config_parameter'].sudo().get_param(
-              'jazzy_backend_theme.primary_hover'),
+              'backend_theme.primary_hover'),
             'light_hover': self.env['ir.config_parameter'].sudo().get_param(
-              'jazzy_backend_theme.light_hover'),
+              'backend_theme.light_hover'),
             'appbar_text': self.env['ir.config_parameter'].sudo().get_param(
-              'jazzy_backend_theme.appbar_text'),
+              'backend_theme.appbar_text'),
             'secondary_hover': self.env['ir.config_parameter'].sudo().get_param(
-              'jazzy_backend_theme.secondary_hover')
+              'backend_theme.secondary_hover')
         }
         return colors

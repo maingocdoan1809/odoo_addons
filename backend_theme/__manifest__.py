@@ -1,0 +1,41 @@
+{
+    "name": "Backend Theme",
+    "version": "18.0.1.0.0",
+    "category": "Themes/Backend",
+    "summary": "An attractive theme for backend",
+    "description": """Minimalist and elegant backend theme for Odoo Backend""",
+    "author": "Mai Ngoc Doan",
+    "company": "Mai Ngoc Doan",
+    "maintainer": "maidoan1809",
+    "website": "https://doandeptrai.io.vn",
+    "depends": ["web", "mail"],
+    "data": [
+        'views/layout_templates.xml',
+        'views/res_config_settings_views.xml',
+        'views/login.xml',
+    ],
+    'assets': {
+        'web.assets_backend': [
+            'backend_theme/static/src/components/app_menu/side_menu.xml',
+            'backend_theme/static/src/components/app_menu/webclient.xml',
+            'backend_theme/static/src/components/app_menu/webclient.js',
+            'backend_theme/static/src/components/app_menu/side_menu.xml',
+            'backend_theme/static/src/layout/style/layout_colors.scss',
+            'backend_theme/static/src/components/app_menu/menu_order.css',
+            'backend_theme/static/src/layout/style/layout_style.scss',
+            'backend_theme/static/src/layout/style/sidebar.scss',
+            'backend_theme/static/src/components/app_menu/search_apps.js',
+        ],
+        'web.assets_frontend': [
+            'backend_theme/static/src/layout/style/login.scss',
+        ],
+    },
+    'images': [
+        'static/description/banner.jpg',
+        'static/description/theme_screenshot.jpg',
+    ],
+    'license': 'LGPL-3',
+    'installable': True,
+    'auto_install': False,
+    'application': False,
+}
