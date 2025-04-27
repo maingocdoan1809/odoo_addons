@@ -17,8 +17,7 @@
     'assets': {
         'web.assets_backend': [
             'backend_theme/static/src/components/app_menu/side_menu.xml',
-            'backend_theme/static/src/components/app_menu/webclient.xml',
-            'backend_theme/static/src/components/app_menu/webclient.js',
+            'backend_theme/static/src/components/app_menu/action_container.js',
             'backend_theme/static/src/components/app_menu/side_menu.xml',
             'backend_theme/static/src/layout/style/layout_colors.scss',
             'backend_theme/static/src/components/app_menu/menu_order.css',
