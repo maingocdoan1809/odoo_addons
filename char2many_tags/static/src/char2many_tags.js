@@ -51,7 +51,6 @@ export class Char2ManyTagsField extends CharField {
                 canEdit: false,
                 onDelete: !this.props.readonly ? () => this.deleteTag(index) : undefined,
                 onKeydown: (ev) => {
-                    console.log("Key down");
                 },
             };
         });

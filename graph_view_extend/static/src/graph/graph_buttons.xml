@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-inherit="web.GraphView.Buttons" t-inherit-mode="extension">
+        <xpath expr="//button[@data-mode='pie']" position="after">
+            <button class="btn btn-secondary fa fa-filter o_graph_button" data-tooltip="Funnel Chart" aria-label="Funnel Chart" data-mode="funnel"
+            t-on-click="() => this.onModeSelected('funnel')"
+            t-att-class="{ active: model.metaData.mode === 'funnel' }"
+            />
+        </xpath>
+    </t>
+
+</templates>

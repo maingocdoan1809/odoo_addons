@@ -89,6 +89,7 @@ html .o_action_manager {
     flex-flow: column nowrap;
     background: var(--settings__tab-bg);
     overflow: auto;
+    padding-bottom: 30px;
     .app_name_container {
         .app_name {
             margin: 0;
