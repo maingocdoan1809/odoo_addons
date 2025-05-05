@@ -1,131 +1,13 @@
 <templates id="template" xml:space="preserve">
-    <!-- Inherit the dropdown to select the apps, to add the function OnClickMainMenu-->
-    <!-- <t t-inherit="web.NavBar.AppsMenu" t-inherit-mode="extension" owl="1">
-        <xpath expr="//Dropdown"
-               position="replace">
-            <div class="d-flex justify-content-center w-100 h-100 align-items-center o_main-menu-button p-2"
-                 t-on-click="OnClickMainMenu">
-                <i class="oi oi-apps"
-                   style="font-size: 18px !important; color: white;"/>
-            </div>
-        </xpath>
-    </t> -->
-    <!--  Added the installed apps to show the Enterprise like app drawer  -->
-    <!-- <t t-inherit-mode="extension" t-inherit="web.NavBar" owl="1">
-        <xpath expr="//header" position="after">
-            <div class="app_components" t-ref="app_components">
-                <div class="text-light container mt-4 d-flex flex-column justify-content-center align-items-center gap-3">
-                    <h2 class="text-light">Robotia Company</h2>
-                </div>
-                <div class="search-container  form-row align-items-center m-auto col-12"
-                     t-ref="search-container"
-                     style="padding-top:20px;">
-                    <div class="search-input col-md-10"
-                         t-ref="search-input"
-                         t-on-input="_searchMenusSchedule">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text"
-                                         style="background:none;border:none;color:white;font-size:1.5rem;">
-                                        <i class="fa fa-search"/>
-                                    </div>
-                                </div>
-                                <input type="search"
-                                       autocomplete="off"
-                                       placeholder="Search menus..."
-                                       class="form-control"
-                                       t-model="state.searchQuery"
-                                       style="padding-left:10px !important;padding-right:10px !important;background:none;border:none;color:white;"/>
-                            </div>
-                    </div>
-                    
-                    <div class="search-results col-md-10 ml-auto mr-auto"
-                         t-ref="search-results"
-                         style="margin-top:20px;">
-                        <ul>
-                            <t t-foreach="menus" t-as="menu"
-                               t-key="menu_index">
-                                <li t-on-click="() => this.handleClick(menu)">
-                                    <span t-esc="menu.name"/>
-                                </li>
-                            </t>
 
-                        </ul>
-
-                    </div>
-                </div>
-                <div class="app-menu" t-ref="app-menu">
-                    <t t-foreach="menuService.getApps()" t-as="app"
-                       t-key="app_index">
-                          <a role="menuitem"
-                             t-on-click="() => this.onNavBarDropdownItemSelection(app)"
-                             t-att-class="{ o_dropdown_active: menuService.getCurrentApp() === app }">
-                            <img t-att-title="app.name"
-                                 style="width: 70px !important;height: 70px !important;margin: 5px 5px 5px 5px;"
-                                 t-attf-src="{{app.webIconData}}"/>
-                              <b class="a_app_menu_title"
-                                 style="color:white;text-shadow: 1px 1px 1px rgb(0 0 0 / 40%);"><t t-esc="app.name"/></b>
-                         </a>
-                    </t>
-                 </div>
-            </div>
-        </xpath>
-    </t> -->
-    <!--  To show the search results when the user search app from the app drawer  -->
-    <!-- <t t-name="jazzy_backend_theme.SearchResults">
-        <t t-foreach="results" t-as="result">
-            <a t-attf-class="o-menu-search-result dropdown-item col-12 ml-auto mr-auto #{result_first ? 'active' : ''}"
-               t-attf-style="background-image:url('data:image/png;base64,#{result.webIconData}')"
-               t-att-data-menu-id="result.id"
-               t-att-data-action-id="result.actionID"
-               t-raw="result.name"
-               style="color:white;"
-               t-on-click="handleClickMenu"
-            />
-        </t>
-    </t> -->
-    <!--  To show the sidebar to select the apps from the sidebar  -->
     <t t-inherit="web.NavBar" t-inherit-mode="extension" owl="1">
-        <xpath expr="//header" position="replace">
-            <header class="o_navbar" t-ref="root">
-                <nav
-                class="o_main_navbar d-print-none"
-                data-command-category="disabled"
-                >
-                <!-- Apps Menu -->
-                <t t-if="env.isSmall" t-call="web.NavBar.AppsMenu">
-                    <t t-set="apps" t-value="menuService.getApps()" />
-                </t>
-        
-                <!-- App Brand -->
-                <DropdownItem
-                    t-if="!env.isSmall and currentApp"
-                    t-esc="currentApp.name"
-                    class="'o_menu_brand d-flex'"
-                    onSelected="() => this.onNavBarDropdownItemSelection(currentApp)"
-                    attrs="{ href: getMenuItemHref(currentApp), 'data-menu-xmlid': currentApp.xmlid, 'data-section': currentApp.id }"
-                />
-        
-                <div class="o_navbar_breadcrumbs d-contents"/>
-<!--         
-                <t t-if="!env.isSmall">
-                    <t t-if="currentAppSections.length" t-call="web.NavBar.SectionsMenu">
-                    <t t-set="sections" t-value="currentAppSections" />
-                    </t>
-                </t> -->
-        
-                <!-- Systray -->
-                <div class="o_menu_systray d-flex flex-shrink-0 ms-auto" role="menu">
-                    <t t-foreach="systrayItems" t-as="item" t-key="item.key">
-                    <!-- This ensures the correct order of the systray items -->
-                    <div t-att-data-index="item.index"/>
-                    <ErrorHandler onError="error => this.handleItemError(error, item)">
-                        <t t-component="item.Component" t-props="item.props"/>
-                    </ErrorHandler>
-                    </t>
-                </div>
-                </nav>
-            </header>
+
+        <xpath expr="//header//t[@t-call='web.NavBar.AppsMenu']" position="replace">
+            <div t-if="!isScopedApp" class="o_navbar_apps_menuq dropdown o_navbar_apps_menu">
+                <button data-hotkey="h" class="o-dropdown dropdown-toggle dropdown" t-on-click="(ev) => env.toggleNavBar()" title="Home Menu">
+                    <i class="oi oi-apps" />
+                </button>
+            </div>
         </xpath>
     </t>
 
