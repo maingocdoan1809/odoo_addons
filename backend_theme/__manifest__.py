@@ -22,6 +22,7 @@
             'backend_theme/static/src/layout/style/layout_colors.scss',
             'backend_theme/static/src/components/app_menu/menu_order.css',
             'backend_theme/static/src/layout/style/layout_style.scss',
+            'backend_theme/static/src/layout/style/animation.scss',
             'backend_theme/static/src/layout/style/sidebar.scss',
             'backend_theme/static/src/components/app_menu/search_apps.js',
         ],

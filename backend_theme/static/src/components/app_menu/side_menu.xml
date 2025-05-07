@@ -4,9 +4,21 @@
 
         <xpath expr="//header//t[@t-call='web.NavBar.AppsMenu']" position="replace">
             <div t-if="!isScopedApp" class="o_navbar_apps_menuq dropdown o_navbar_apps_menu">
-                <button data-hotkey="h" class="o-dropdown dropdown-toggle dropdown" t-on-click="(ev) => env.toggleNavBar()" title="Home Menu">
-                    <i class="oi oi-apps" />
-                </button>
+                    <div class="effect-wrapper o-dropdown dropdown-toggle dropdown" t-on-click="(ev) => env.toggleNavBar()" title="Home Menu">
+                        <div class="app-icon pulsing-colors" >
+                          <div class="icon-grid">
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                          </div>
+                        </div>
+                    </div>
             </div>
         </xpath>
     </t>
