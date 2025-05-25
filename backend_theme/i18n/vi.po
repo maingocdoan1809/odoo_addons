@@ -1,0 +1,10 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* backend_theme
+#
+
+#. module: backend_theme
+#. odoo-javascript
+#: code:addons/backend_theme/static/src/components/app_menu/side_menu.xml:0
+msgid "Apps"
+msgstr "Ứng dụng"
