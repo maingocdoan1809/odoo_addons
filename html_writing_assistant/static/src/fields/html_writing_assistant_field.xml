@@ -57,7 +57,7 @@
                     
                     <!-- Suggestions List -->
                     <div class="o_suggestions_list" style="max-height: 300px; overflow-y: auto;">
-                        <div t-if="filteredSuggestions.length === 0" class="text-center text-muted p-4">
+                        <div t-if="filteredSuggestions.length === 0" class="text-center p-4">
                             <i class="fa fa-check-circle fa-2x mb-2"></i>
                             <div t-if="assistantState.suggestions.length === 0">
                                 Click "Analyze" to get writing suggestions

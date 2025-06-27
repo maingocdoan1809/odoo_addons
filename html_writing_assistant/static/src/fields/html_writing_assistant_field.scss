@@ -1,14 +1,12 @@
 // Writing Assistant Styles
 .o_writing_assistant_container {
     border: 1px solid #dee2e6;
-    border-radius: 0.375rem;
     margin-top: 0.5rem;
     background-color: #fff;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 
     .o_writing_assistant_header {
         background-color: #f8f9fa;
-        border-radius: 0.375rem 0.375rem 0 0;
         
         .fw-bold {
             color: #495057;
@@ -214,11 +212,11 @@
         .o_writing_assistant_header,
         .o_category_filter,
         .o_suggestions_actions {
-            background-color: #374151;
+            // background-color: #374151;
         }
         
         .o_suggestion_item:hover {
-            background-color: #374151;
+            // background-color: #374151;
         }
     }
     
