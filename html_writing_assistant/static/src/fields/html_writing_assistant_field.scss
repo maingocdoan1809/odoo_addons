@@ -1,0 +1,259 @@
+// Writing Assistant Styles
+.o_writing_assistant_container {
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    margin-top: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    .o_writing_assistant_header {
+        background-color: #f8f9fa;
+        border-radius: 0.375rem 0.375rem 0 0;
+        
+        .fw-bold {
+            color: #495057;
+        }
+        
+        .badge {
+            font-size: 0.75rem;
+        }
+    }
+    
+    .o_writing_assistant_suggestions {
+        .o_category_filter {
+            background-color: #f8f9fa;
+            
+            .btn {
+                font-size: 0.875rem;
+                padding: 0.25rem 0.5rem;
+                
+                .badge {
+                    font-size: 0.7rem;
+                }
+            }
+        }
+        
+        .o_suggestions_list {
+            .o_suggestion_item {
+                transition: background-color 0.2s ease;
+                
+                &:hover {
+                    background-color: #f8f9fa;
+                }
+                
+                &:last-child {
+                    border-bottom: none;
+                }
+                
+                .badge {
+                    font-size: 0.7rem;
+                    text-transform: capitalize;
+                }
+                
+                .o_suggestion_content {
+                    .text-decoration-line-through {
+                        background-color: rgba(220, 53, 69, 0.1);
+                        padding: 2px 4px;
+                        border-radius: 3px;
+                    }
+                    
+                    .text-success {
+                        background-color: rgba(25, 135, 84, 0.1);
+                        padding: 2px 4px;
+                        border-radius: 3px;
+                    }
+                }
+            }
+        }
+        
+        .o_suggestions_actions {
+            background-color: #f8f9fa;
+            border-radius: 0 0 0.375rem 0.375rem;
+        }
+    }
+}
+
+// Suggestion Highlights in Editor
+.o_suggestion_highlight {
+    position: relative;
+    transition: all 0.2s ease;
+    
+    &:hover {
+        filter: brightness(0.9);
+        transform: translateY(-1px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    // Category-specific styles
+    &[data-category="grammar"] {
+        background-color: #e3f2fd !important;
+        border-bottom-color: #2196f3 !important;
+    }
+    
+    &[data-category="spelling"] {
+        background-color: #ffebee !important;
+        border-bottom-color: #f44336 !important;
+    }
+    
+    &[data-category="punctuation"] {
+        background-color: #fff3e0 !important;
+        border-bottom-color: #ff9800 !important;
+    }
+    
+    &[data-category="style"] {
+        background-color: #e8f5e8 !important;
+        border-bottom-color: #4caf50 !important;
+    }
+    
+    &[data-category="clarity"] {
+        background-color: #f3e5f5 !important;
+        border-bottom-color: #9c27b0 !important;
+    }
+}
+
+// Tooltip Styles
+.o_writing_assistant_tooltip {
+    border: 1px solid #dee2e6;
+    max-width: 320px;
+    font-size: 0.875rem;
+    
+    .badge {
+        font-size: 0.7rem;
+        text-transform: capitalize;
+    }
+    
+    .btn {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+    
+    // Tooltip arrow shadow
+    &::before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 9px solid transparent;
+        border-right: 9px solid transparent;
+        z-index: -1;
+    }
+    
+    &[data-position="above"]::before {
+        bottom: -9px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-top: 9px solid #dee2e6;
+    }
+    
+    &[data-position="below"]::before {
+        top: -9px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-bottom: 9px solid #dee2e6;
+    }
+}
+
+// Animation for loading state
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.o_writing_assistant_container .fa-spinner {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+// Responsive design
+@media (max-width: 768px) {
+    .o_writing_assistant_container {
+        .o_writing_assistant_header {
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: stretch;
+            
+            .btn-group {
+                justify-content: center;
+            }
+        }
+        
+        .o_category_filter .d-flex {
+            justify-content: center;
+        }
+        
+        .o_suggestions_actions .d-flex {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+    }
+    
+    .o_writing_assistant_tooltip {
+        max-width: 280px;
+        margin: 0 10px;
+    }
+}
+
+// Integration with Odoo's form layout
+.o_form_view .o_field_widget[name] .o_writing_assistant_container {
+    margin-top: 0.75rem;
+}
+
+// Dark mode support (if Odoo implements it)
+@media (prefers-color-scheme: dark) {
+    .o_writing_assistant_container {
+        background-color: #2d3748;
+        border-color: #4a5568;
+        color: #e2e8f0;
+        
+        .o_writing_assistant_header,
+        .o_category_filter,
+        .o_suggestions_actions {
+            background-color: #374151;
+        }
+        
+        .o_suggestion_item:hover {
+            background-color: #374151;
+        }
+    }
+    
+    .o_writing_assistant_tooltip {
+        background-color: #2d3748;
+        border-color: #4a5568;
+        color: #e2e8f0;
+    }
+}
+
+// Focus and accessibility improvements
+.o_writing_assistant_container {
+    .btn:focus,
+    .btn.focus {
+        box-shadow: 0 0 0 0.2rem rgba(138, 43, 226, 0.25);
+    }
+    
+    .o_suggestion_item {
+        &:focus-within {
+            background-color: #e9ecef;
+            outline: 2px solid #8a2be2;
+            outline-offset: -2px;
+        }
+    }
+}
+
+// Print styles
+@media print {
+    .o_writing_assistant_container,
+    .o_writing_assistant_tooltip {
+        display: none !important;
+    }
+    
+    .o_suggestion_highlight {
+        background-color: transparent !important;
+        border-bottom: none !important;
+    }
+}

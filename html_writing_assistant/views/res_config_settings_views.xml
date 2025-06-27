@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Configuration Settings Form View -->
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.writing.assistant</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="55"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Writing Assistant" name="html_writing_assistant" groups="base.group_system">
+                    <block title="Google Gemini AI Configuration" help="Configure Google Gemini API for AI-powered writing assistance">
+                        <setting>
+                            <div class="content-group">
+                                <div class="row mt16">
+                                    <label for="gemini_api_key" string="Gemini API Key" class="col-lg-3 o_light_label"/>
+                                    <field name="gemini_api_key" placeholder="Enter your Google Gemini API key" password="True" class="col-lg-6"/>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-9 offset-lg-3">
+                                        <div class="text-muted">
+                                            <small>
+                                                Get your API key from 
+                                                <a href="https://makersuite.google.com/app/apikey" target="_blank">Google AI Studio</a>
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </setting>
+                        
+                        <setting>
+                            <div class="content-group">
+                                <div class="row mt16">
+                                    <label for="gemini_model" string="Gemini Model" class="col-lg-3 o_light_label"/>
+                                    <field name="gemini_model" class="col-lg-6"/>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-9 offset-lg-3">
+                                        <div class="text-muted">
+                                            <small>
+                                                Gemini 1.5 Flash is recommended for fast, cost-effective analysis.
+                                                Gemini 1.5 Pro provides higher quality but slower responses.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </setting>
+                        
+                        <setting>
+                            <div class="content-group">
+                                <div class="row mt16">
+                                    <div class="col-lg-12">
+                                        <button name="test_gemini_connection" 
+                                                string="Test Connection" 
+                                                type="object" 
+                                                class="btn-primary"/>
+                                        <span class="text-muted ms-3">
+                                            <small>Test your Gemini API configuration</small>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </setting>
+                    </block>
+                    
+                    <block title="Analysis Settings" help="Configure how the writing assistant analyzes text">
+                        <setting>
+                            <div class="content-group">
+                                <div class="row mt16">
+                                    <label for="gemini_temperature" string="Temperature" class="col-lg-3 o_light_label"/>
+                                    <field name="gemini_temperature" class="col-lg-3"/>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-9 offset-lg-3">
+                                        <div class="text-muted">
+                                            <small>
+                                                Controls creativity in responses. Lower values (0.1-0.3) give more consistent analysis.
+                                                Higher values (0.7-1.0) give more varied suggestions.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </setting>
+                        
+                        <setting>
+                            <div class="content-group">
+                                <div class="row mt16">
+                                    <label for="max_suggestions" string="Maximum Suggestions" class="col-lg-3 o_light_label"/>
+                                    <field name="max_suggestions" class="col-lg-3"/>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-9 offset-lg-3">
+                                        <div class="text-muted">
+                                            <small>Maximum number of suggestions to show per analysis (recommended: 10-20)</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </setting>
+                        
+                        <setting>
+                            <div class="content-group">
+                                <div class="row mt16">
+                                    <label for="gemini_timeout" string="API Timeout (seconds)" class="col-lg-3 o_light_label"/>
+                                    <field name="gemini_timeout" class="col-lg-3"/>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-9 offset-lg-3">
+                                        <div class="text-muted">
+                                            <small>Timeout for API requests. Increase if you experience timeout errors.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </setting>
+                    </block>
+                    
+                    <block title="Fallback Options" help="Configure fallback behavior when API is unavailable">
+                        <setting>
+                            <div class="content-group">
+                                <div class="row mt16">
+                                    <div class="col-lg-12">
+                                        <field name="enable_fallback"/>
+                                        <label for="enable_fallback" class="ms-2">Enable fallback suggestions when Gemini API is unavailable</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="text-muted">
+                                            <small>
+                                                When enabled, the system will use built-in grammar and spelling checks
+                                                if the Gemini API is unavailable or returns an error.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </setting>
+                    </block>
+                    
+                    <block title="Usage Information" help="Information about API usage and costs">
+                        <div class="alert alert-info">
+                            <h5>API Usage &amp; Costs</h5>
+                            <ul class="mb-0">
+                                <li><strong>Gemini 1.5 Flash:</strong> Free tier includes 15 requests per minute, 1,500 requests per day</li>
+                                <li><strong>Gemini 1.5 Pro:</strong> Free tier includes 2 requests per minute, 50 requests per day</li>
+                                <li><strong>Rate Limits:</strong> The system automatically handles rate limiting and retries</li>
+                                <li><strong>Cost:</strong> Free tier should be sufficient for most users. Paid plans available for high volume.</li>
+                                <li><strong>Privacy:</strong> Text is sent to Google for analysis. Review their privacy policy.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="alert alert-warning">
+                            <h5>Setup Instructions</h5>
+                            <ol class="mb-0">
+                                <li>Visit <a href="https://makersuite.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
+                                <li>Sign in with your Google account</li>
+                                <li>Click "Create API Key" and select a project</li>
+                                <li>Copy the generated API key</li>
+                                <li>Paste it in the "Gemini API Key" field above</li>
+                                <li>Click "Test Connection" to verify the setup</li>
+                            </ol>
+                        </div>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Menu item for Writing Assistant settings -->
+    <record id="action_writing_assistant_config" model="ir.actions.act_window">
+        <field name="name">Writing Assistant Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module': 'html_writing_assistant'}</field>
+    </record>
+
+    <menuitem id="menu_writing_assistant_config" 
+              name="Configuration" 
+              parent="menu_writing_assistant_root" 
+              action="action_writing_assistant_config" 
+              sequence="90"
+              groups="base.group_system"/>
+</odoo>

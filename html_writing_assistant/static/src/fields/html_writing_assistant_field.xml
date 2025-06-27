@@ -1,0 +1,171 @@
+<templates xml:space="preserve">
+    <t t-name="html_writing_assistant.HtmlWritingAssistantField" t-inherit="html_editor.HtmlField" t-inherit-mode="primary">
+        
+        <!-- Add Writing Assistant Panel -->
+        <xpath expr="//div[hasclass('h-100')]" position="after">
+            <div class="o_writing_assistant_container" t-if="!this.displayReadonly">
+                
+                <!-- Writing Assistant Header -->
+                <div class="o_writing_assistant_header d-flex justify-content-between align-items-center p-2 border-bottom">
+                    <div class="d-flex align-items-center">
+                        <i class="fa fa-magic text-primary me-2"></i>
+                        <span class="fw-bold">Writing Assistant</span>
+                        <span t-if="assistantState.suggestions.length > 0" 
+                              class="badge bg-primary ms-2" 
+                              t-esc="assistantState.suggestions.length"/>
+                    </div>
+                    <div class="btn-group btn-group-sm">
+                        <button class="btn btn-outline-primary" 
+                                t-on-click="analyzeText"
+                                t-att-disabled="assistantState.isAnalyzing">
+                            <i t-if="assistantState.isAnalyzing" class="fa fa-spinner fa-spin"></i>
+                            <i t-else="" class="fa fa-search"></i>
+                            <span class="ms-1" t-if="assistantState.isAnalyzing">Analyzing...</span>
+                            <span class="ms-1" t-else="">Analyze</span>
+                        </button>
+                        <button class="btn btn-outline-secondary" 
+                                t-on-click="toggleSuggestionsPanel"
+                                t-att-class="assistantState.showSuggestions ? 'active' : ''">
+                            <i class="fa fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Error Display -->
+                <div t-if="assistantState.error" class="alert alert-danger m-2">
+                    <i class="fa fa-exclamation-triangle me-2"></i>
+                    <span t-esc="assistantState.error"/>
+                </div>
+                
+                <!-- Suggestions Panel -->
+                <div t-if="assistantState.showSuggestions" class="o_writing_assistant_suggestions">
+                    
+                    <!-- Category Filter -->
+                    <div class="o_category_filter p-2 border-bottom">
+                        <div class="d-flex flex-wrap gap-1">
+                            <button t-foreach="categories" t-as="category" t-key="category.id"
+                                    class="btn btn-sm"
+                                    t-att-class="assistantState.activeCategory === category.id ? 'btn-primary' : 'btn-outline-secondary'"
+                                    t-on-click="() => this.setActiveCategory(category.id)">
+                                <span t-esc="category.label"/>
+                                <span t-if="assistantState.suggestions.filter(s => category.id === 'all' or s.category === category.id).length > 0"
+                                      class="ms-1 badge bg-light text-dark" 
+                                      t-esc="assistantState.suggestions.filter(s => category.id === 'all' or s.category === category.id).length"/>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Suggestions List -->
+                    <div class="o_suggestions_list" style="max-height: 300px; overflow-y: auto;">
+                        <div t-if="filteredSuggestions.length === 0" class="text-center text-muted p-4">
+                            <i class="fa fa-check-circle fa-2x mb-2"></i>
+                            <div t-if="assistantState.suggestions.length === 0">
+                                Click "Analyze" to get writing suggestions
+                            </div>
+                            <div t-else="">
+                                No suggestions in this category
+                            </div>
+                        </div>
+                        
+                        <div t-foreach="filteredSuggestions" t-as="suggestion" t-key="suggestion.id"
+                             class="o_suggestion_item border-bottom p-2 hover-bg-light">
+                            
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <span class="badge bg-secondary" t-esc="suggestion.category"/>
+                                <div class="btn-group btn-group-sm">
+                                    <button class="btn btn-outline-success btn-sm" 
+                                            t-on-click="() => this.applySuggestion(suggestion)"
+                                            title="Apply suggestion">
+                                        <i class="fa fa-check"></i>
+                                    </button>
+                                    <button class="btn btn-outline-danger btn-sm" 
+                                            t-on-click="() => this.dismissSuggestion(suggestion)"
+                                            title="Dismiss suggestion">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="o_suggestion_content">
+                                <div class="d-flex align-items-center gap-2 small mb-1">
+                                    <span class="text-decoration-line-through text-danger" t-esc="suggestion.issue"/>
+                                    <i class="fa fa-arrow-right text-muted"></i>
+                                    <span class="text-success fw-bold" t-esc="suggestion.suggestion"/>
+                                </div>
+                                <div class="small text-muted" t-esc="suggestion.explanation"/>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div t-if="assistantState.suggestions.length > 0" class="o_suggestions_actions p-2 border-top">
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-success btn-sm flex-grow-1" 
+                                    t-on-click="applyAllSuggestions">
+                                <i class="fa fa-check-double me-1"></i>
+                                Apply All
+                            </button>
+                            <button class="btn btn-outline-secondary btn-sm" 
+                                    t-on-click="clearAllSuggestions">
+                                <i class="fa fa-times me-1"></i>
+                                Clear All
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+        
+        <!-- Add Tooltip for Suggestions -->
+        <xpath expr="//div[hasclass('h-100')]" position="after">
+            <div t-if="assistantState.activeTooltip" 
+                 class="o_writing_assistant_tooltip position-absolute bg-white border rounded shadow-lg p-3"
+                 style="z-index: 1050; max-width: 300px;"
+                 t-att-style="'top: ' + assistantState.tooltipPosition.top + 'px; left: ' + assistantState.tooltipPosition.left + 'px; transform: ' + (assistantState.tooltipPosition.isBelow ? 'translateX(-50%)' : 'translate(-50%, -100%)')">
+                
+                <!-- Tooltip Header -->
+                <div class="d-flex align-items-center gap-2 mb-2">
+                    <span class="badge bg-secondary" t-esc="assistantState.activeTooltip.category"/>
+                    <small class="text-muted">Click to apply</small>
+                </div>
+                
+                <!-- Tooltip Content -->
+                <div class="mb-3">
+                    <div class="d-flex align-items-center gap-2 small mb-2">
+                        <span class="text-decoration-line-through text-danger" t-esc="assistantState.activeTooltip.issue"/>
+                        <i class="fa fa-arrow-right text-muted"></i>
+                        <span class="text-success fw-bold" t-esc="assistantState.activeTooltip.suggestion"/>
+                    </div>
+                    <div class="small text-muted" t-esc="assistantState.activeTooltip.explanation"/>
+                </div>
+                
+                <!-- Tooltip Actions -->
+                <div class="d-flex gap-2">
+                    <button class="btn btn-success btn-sm" 
+                            t-on-click="() => this.applySuggestion(assistantState.activeTooltip)">
+                        <i class="fa fa-check me-1"></i>
+                        Apply
+                    </button>
+                    <button class="btn btn-outline-danger btn-sm" 
+                            t-on-click="() => this.dismissSuggestion(assistantState.activeTooltip)">
+                        <i class="fa fa-times me-1"></i>
+                        Dismiss
+                    </button>
+                    <button class="btn btn-outline-secondary btn-sm" 
+                            t-on-click="() => this.assistantState.activeTooltip = null">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+                
+                <!-- Tooltip Arrow -->
+                <div class="position-absolute" 
+                     style="width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent;"
+                     t-att-style="assistantState.tooltipPosition.isBelow ? 
+                                    'top: -8px; left: 50%; transform: translateX(-50%); border-bottom: 8px solid white;' : 
+                                    'bottom: -8px; left: 50%; transform: translateX(-50%); border-top: 8px solid white;'">
+                </div>
+            </div>
+        </xpath>
+        
+    </t>
+</templates>

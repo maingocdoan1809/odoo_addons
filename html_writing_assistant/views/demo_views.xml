@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="view_writing_assistant_demo_tree" model="ir.ui.view">
+        <field name="name">writing.assistant.demo.tree</field>
+        <field name="model">writing.assistant.demo</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="user_id"/>
+                <field name="date_created"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_writing_assistant_demo_form" model="ir.ui.view">
+        <field name="name">writing.assistant.demo.form</field>
+        <field name="model">writing.assistant.demo</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="user_id"/>
+                        </group>
+                        <group>
+                            <field name="date_created"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Content">
+                            <field name="content" widget="html_writing_assistant" 
+                                   options="{'height': 400, 'resizable': true}"/>
+                        </page>
+                        <page string="Description">
+                            <field name="description" placeholder="Add any additional notes here..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_writing_assistant_demo" model="ir.actions.act_window">
+        <field name="name">Writing Assistant Demo</field>
+        <field name="res_model">writing.assistant.demo</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first document with writing assistant!
+            </p>
+            <p>
+                Use the HTML field with writing assistant widget to get AI-powered suggestions
+                for improving your text quality, grammar, spelling, and style.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="menu_writing_assistant_root" 
+              name="Writing Assistant" 
+              sequence="50"/>
+              
+    <menuitem id="menu_writing_assistant_demo" 
+              name="Documents" 
+              parent="menu_writing_assistant_root" 
+              action="action_writing_assistant_demo" 
+              sequence="10"/>
+
+    <!-- Data -->
+    <record id="demo_document_1" model="writing.assistant.demo">
+        <field name="name">Sample Document with Errors</field>
+        <field name="description">A document with intentional errors for testing</field>
+        <field name="content"><![CDATA[
+            <p>This is a sample document to demonstarte the writing assistant capabilities.</p>
+            <p>The writing assistant can help you improve you grammar, spelling, and overal style.</p>
+            <p>It will analyize your text and provide suggestions for better clarity and readibility.</p>
+            <p>You can use this tool to enhance the quality of you writting significantly.</p>
+            <p>Their are many benefits to using AI-powered writing assistance tools.</p>
+        ]]></field>
+    </record>
+
+    <record id="demo_document_2" model="writing.assistant.demo">
+        <field name="name">Business Proposal Draft</field>
+        <field name="description">Draft business proposal document</field>
+        <field name="content"><![CDATA[
+            <h2>Business Proposal</h2>
+            <p>We are very excited to present this proposal for you consideration.</p>
+            <p>Our company have been in bussiness for many years and we have alot of experiance.</p>
+            <p>This proposal will provide you with all the neccessary information about our services.</p>
+            <p>We beleive that this partnership will be very sucessful for both organizations.</p>
+        ]]></field>
+    </record>
+</odoo>
